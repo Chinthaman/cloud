@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cloud Identity</title>
+  <!-- Futuristic cloud‑tech font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
@@ -13,7 +15,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: sans-serif;
+      font-family: 'Orbitron', sans-serif; /* robotic font */
     }
 
     #grid {
@@ -37,8 +39,8 @@
     #diagram {
       position: absolute;
       z-index: 1;
-      max-width: 80vmin;
-      width: 550px;
+      width: 90vw;
+      max-width: 550px;
     }
 
     .wire {
@@ -72,9 +74,9 @@
       margin-top: 8px;
       font-size: 16px;
       color: #00ffff;
-      white-space: nowrap;
+      white-space: pre-line;
+      text-align: center;
       display: inline-block;
-      min-width: 110px;
     }
 
     svg.logo {
@@ -89,7 +91,7 @@
       transform: translateX(-50%);
       color: #00ffff;
       font-size: 24px;
-      font-weight: bold;
+      font-weight: 500;
       z-index: 2;
       text-align: center;
       animation: floatText 5s ease-in-out infinite alternate;
@@ -99,28 +101,30 @@
       from { transform: translate(-50%, -5px); }
       to   { transform: translate(-50%, 5px); }
     }
+
+    @media (max-width: 480px) {
+      #cloud-text { font-size: 18px; }
+      #linkedin span { font-size: 14px; }
+      svg.logo { width: 48px; height: 48px; }
+      #linkedin { top: 140px; }
+    }
   </style>
   <script>
     console.log("Page is loading...");
-    window.addEventListener("load", function () {
+    window.addEventListener("load", () => {
       console.log("Window loaded.");
-      const grid = document.getElementById("grid");
-      const diagram = document.getElementById("diagram");
-      const linkedin = document.getElementById("linkedin");
-      const text = document.getElementById("cloud-text");
-
-      if (grid) console.log("Grid element loaded.");
-      if (diagram) console.log("Diagram SVG loaded.");
-      if (linkedin) console.log("LinkedIn link element ready.");
-      if (text) console.log("Cloud text element is set.");
+      const ids = ["grid","diagram","linkedin","cloud-text"];
+      ids.forEach(id => console.log(`${id} element ` + (document.getElementById(id) ? 'loaded.' : 'missing!')));
     });
   </script>
 </head>
 <body>
   <div id="grid"></div>
+
   <div id="cloud-text">
     Ready to Onboard...🚀
   </div>
+
   <svg id="diagram" viewBox="0 0 800 600" fill="none" stroke="#00ffff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
     <path d="M200 310a90 90 0 0 1 120-109 120 120 0 0 1 225-2 85 85 0 0 1 35 165H220A80 80 0 0 1 200 310Z" class="wire"/>
     <rect x="100" y="390" width="90" height="120" rx="6"/>
@@ -136,6 +140,7 @@
     <polyline points="600 310 600 380 400 380" class="wire"/>
     <polyline points="500 310 500 390 650 390" class="wire"/>
   </svg>
+
   <a id="linkedin" href="https://www.linkedin.com/in/chinthamanik/" target="_blank" rel="noopener">
     <svg class="logo" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect fill="#0A66C2" width="34" height="34" rx="4"/>
