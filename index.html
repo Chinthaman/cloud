@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Identity</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background: #0d1117;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+    }
+
+    #grid {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background:
+        repeating-linear-gradient(0deg, rgba(0,255,255,.12) 0 2px, transparent 2px 60px),
+        repeating-linear-gradient(90deg, rgba(0,255,255,.12) 0 2px, transparent 2px 60px);
+      transform: perspective(900px) rotateX(65deg);
+      animation: gridMove 28s linear infinite;
+    }
+
+    @keyframes gridMove {
+      from { background-position: 0 0, 0 0; }
+      to { background-position: 0 1000px, 1000px 0; }
+    }
+
+    #diagram {
+      position: absolute;
+      z-index: 1;
+      max-width: 80vmin;
+      width: 550px;
+    }
+
+    .wire {
+      stroke-dasharray: 4 6;
+      animation: dash 6s linear infinite;
+    }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -100; }
+    }
+
+    #linkedin {
+      z-index: 3;
+      text-decoration: none;
+      text-align: center;
+      position: relative;
+      top: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #fff;
+      transition: transform 0.3s;
+      width: max-content;
+    }
+
+    #linkedin:hover {
+      transform: scale(1.1);
+    }
+
+    #linkedin span {
+      margin-top: 8px;
+      font-size: 16px;
+      color: #00ffff;
+      white-space: nowrap;
+      display: inline-block;
+      min-width: 110px;
+    }
+
+    svg.logo {
+      width: 60px;
+      height: 60px;
+    }
+
+    #cloud-text {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #00ffff;
+      font-size: 24px;
+      font-weight: bold;
+      z-index: 2;
+      text-align: center;
+      animation: floatText 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatText {
+      from { transform: translate(-50%, -5px); }
+      to   { transform: translate(-50%, 5px); }
+    }
+  </style>
+  <script>
+    console.log("Page is loading...");
+    window.addEventListener("load", function () {
+      console.log("Window loaded.");
+      const grid = document.getElementById("grid");
+      const diagram = document.getElementById("diagram");
+      const linkedin = document.getElementById("linkedin");
+      const text = document.getElementById("cloud-text");
+
+      if (grid) console.log("Grid element loaded.");
+      if (diagram) console.log("Diagram SVG loaded.");
+      if (linkedin) console.log("LinkedIn link element ready.");
+      if (text) console.log("Cloud text element is set.");
+    });
+  </script>
+</head>
+<body>
+  <div id="grid"></div>
+  <div id="cloud-text">
+    Ready to Onboard...🚀
+  </div>
+  <svg id="diagram" viewBox="0 0 800 600" fill="none" stroke="#00ffff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M200 310a90 90 0 0 1 120-109 120 120 0 0 1 225-2 85 85 0 0 1 35 165H220A80 80 0 0 1 200 310Z" class="wire"/>
+    <rect x="100" y="390" width="90" height="120" rx="6"/>
+    <line x1="100" y1="430" x2="190" y2="430"/>
+    <line x1="100" y1="470" x2="190" y2="470"/>
+    <ellipse cx="650" cy="430" rx="70" ry="28"/>
+    <rect x="580" y="430" width="140" height="80" rx="0"/>
+    <ellipse cx="650" cy="510" rx="70" ry="28"/>
+    <rect x="355" y="380" width="90" height="90" rx="8"/>
+    <line x1="355" y1="415" x2="445" y2="415"/>
+    <line x1="355" y1="445" x2="445" y2="445"/>
+    <polyline points="200 310 200 390 145 390" class="wire"/>
+    <polyline points="600 310 600 380 400 380" class="wire"/>
+    <polyline points="500 310 500 390 650 390" class="wire"/>
+  </svg>
+  <a id="linkedin" href="https://www.linkedin.com/in/chinthamanik/" target="_blank" rel="noopener">
+    <svg class="logo" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect fill="#0A66C2" width="34" height="34" rx="4"/>
+      <path d="M10 14h4v12h-4V14zm2-6a2 2 0 110 4 2 2 0 010-4zm6 6h3.8v1.6h.1a4.1 4.1 0 013.7-2.1c3.9 0 4.6 2.6 4.6 6v6.5H26v-5.8c0-1.4 0-3.1-1.9-3.1-1.9 0-2.2 1.5-2.2 3v5.9h-3.9V14z" fill="#fff"/>
+    </svg>
+    <span>Check In Here</span>
+  </a>
+</body>
+</html>
